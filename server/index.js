@@ -10,14 +10,18 @@ const port = 3001;
 
 const app = express();
 
-app.use(express.static(`${__dirname}/../build`));
+// app.use(express.static(`${__dirname}/../build`));  // for production use
 
 app.use(bodyParser.json());
 app.use(cors());
 
+//get random item
 app.get('/random', (req, res) => res.send(_.sample(array)))
 
-// const path = require("path");
+//return all items
+app.get('/all', (req, res) => res.send(array))
+
+// const path = require("path");  //for production use
 // app.get("*", (req, res) => {
 //   res.sendFile(path.join(__dirname, "../build/index.html"));
 // });
