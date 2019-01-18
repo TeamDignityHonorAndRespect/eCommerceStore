@@ -3,11 +3,10 @@ import { Advertisement } from 'semantic-ui-react'
 
 const AdvertisementExampleCommonUnits = () => (
   <div>
-    <Advertisement unit='medium rectangle' />
-    <Advertisement unit='banner' test='Banner' />
-    <Advertisement unit='leaderboard' test='Leaderboard' />
-    <Advertisement unit='large rectangle' test='Large Rectangle' />
-    <Advertisement unit='half page' test='Half Page' />
+    <Advertisement className="grid-item" unit='medium rectangle' test='Medium Rectangle' />
+    <Advertisement className="grid-item" unit='medium rectangle' test='Medium Rectangle' />
+    <Advertisement className="grid-item" unit='medium rectangle' test='Medium Rectangle' />
+    <Advertisement className="grid-item" unit='medium rectangle' test='Medium Rectangle' />
   </div>
 )
 

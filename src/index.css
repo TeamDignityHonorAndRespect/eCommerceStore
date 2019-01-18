@@ -6,10 +6,22 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 500%;
+  height: 200%;
+}
+#root{
+  height: 80%;
+}
+.App{
+  height: 100%;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+.routesWrapper {
+  width: 80%;
+  margin: 0 auto;
+  border: solid thin;
+  height: 80%;
 }
