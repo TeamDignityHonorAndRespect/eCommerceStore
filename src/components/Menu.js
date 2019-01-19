@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Menu } from 'semantic-ui-react';
+import { Menu, Icon } from 'semantic-ui-react';
 
 
 export default class MenuExampleBasic extends Component {
