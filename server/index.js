@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-var _ = require('underscore');
+const _ = require('underscore');
 const massive = require("massive");
 
 const array = ['item1', 'item2', 'item3', 'item4']
@@ -47,6 +47,16 @@ app.get("/api/users", (req, res) => {
             res.status(200).json(response);
         });
 });
+
+app.get("/api/createUser", (req, res) => {
+    app
+        .get("db")
+        .createUser()
+        .then(response => {
+            res.status(200).json(response);
+        });
+});
+
 // const path = require("path");  //for production use
 // app.get("*", (req, res) => {
 //   res.sendFile(path.join(__dirname, "../build/index.html"));

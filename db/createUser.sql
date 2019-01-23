@@ -1,4 +1,4 @@
 INSERT INTO users
-    (created_on, user_role)
+    (created_on, user_role, name)
 values
-    ($1, $2)
+    (CURRENT_DATE, $2, $3)
