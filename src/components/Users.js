@@ -11,7 +11,7 @@ class Users extends Component {
 
     }
     componentDidMount() {
-        this.props.getUsers();
+        this.props.getUsers().then(console.log)
     }
 
     render() {
@@ -27,5 +27,5 @@ class Users extends Component {
 const mapStateToProps = state => state;
 
 export default connect(mapStateToProps, {
-    getUsers
+    getUsers,
 })(Users);

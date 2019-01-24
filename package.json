@@ -36,5 +36,9 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "proxy": "http://localhost:3001"
 }
