@@ -6,16 +6,16 @@ class Users extends Component {
     constructor() {
         super();
         this.state = {
-
+            users: []
         };
 
     }
     componentDidMount() {
-        this.props.getUsers().then(console.log)
+        this.props.getUsers().then(resp => this.setState({users: resp.value.data}))
     }
 
     render() {
-        console.log(this.props)
+        console.log('state: ', this.state)
         return (
             <div >
                 nothing
