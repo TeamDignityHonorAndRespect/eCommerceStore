@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Menu from './components/Menu';
 import routes from './routes';
 import GridExampleGrid from './components/Grid'
+import { connect } from "react-redux";
 
 class App extends Component {
   render() {
@@ -17,4 +18,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => state;
+
+export default connect(mapStateToProps, {
+  //nothing yet
+})(App);

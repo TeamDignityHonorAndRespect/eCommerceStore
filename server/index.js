@@ -39,23 +39,23 @@ app.get('/random', (req, res) => res.send(_.sample(array)))
 //return all items
 app.get('/all', (req, res) => res.send(array))
 
-app.get("/api/users", (req, res) => {
+app.get("/users", (req, res) => {
     app
         .get("db")
         .getAllUsers()
-        .then(response => {
-            res.status(200).json(response);
+        .then(users => {
+            res.status(200).json(users);
         });
 });
 
-app.get("/api/createUser", (req, res) => {
-    app
-        .get("db")
-        .createUser()
-        .then(response => {
-            res.status(200).json(response);
-        });
-});
+// app.get("/api/createUser", (req, res) => {
+//     app
+//         .get("db")
+//         .createUser()
+//         .then(response => {
+//             res.status(200).json(response);
+//         });
+// });
 
 // const path = require("path");  //for production use
 // app.get("*", (req, res) => {

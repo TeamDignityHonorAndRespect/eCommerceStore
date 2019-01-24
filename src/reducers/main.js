@@ -1,10 +1,26 @@
-const initialState = {
+import axios from "axios";
 
+const GET_USERS = "GET_USERS";
+
+// ACTION CREATORS
+export function getUsers() {
+    return {
+        type: GET_USERS,
+        payload: axios
+            .request("/users")
+            .then(response => response)
+            .catch(err => err.message)
+    };
+}
+
+const initialState = {
+    users: {}
 }
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-
+        case GET_USERS:
+            return Object.assign({}, state, { users: action.payload });
         default:
             return state
     }
