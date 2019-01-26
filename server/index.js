@@ -14,20 +14,10 @@ const app = express();
 // app.use(express.static(`${__dirname}/../build`));  // for production use
 
 // Connect to database
-massive({
-    host: process.env.HOST,
-    port: process.env.PORT,
-    database: process.env.DATABASE,
-    user: process.env.USERID,
-    password: process.env.PASSWORD,
-    ssl: process.env.SSL,
-    port: process.env.PORT
-})
-    .then(db => {
-        // console.log(db);
-        app.set("db", db);
-    })
-    .catch(console.log)
+massive(process.env.URI).then(db => {
+    console.log('You have successfully connected to the database.')
+    app.set('db', db);
+}).catch(err => console.log(err))
 
 
 app.use(bodyParser.json());
