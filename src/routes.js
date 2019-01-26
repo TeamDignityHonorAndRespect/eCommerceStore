@@ -10,7 +10,7 @@ export default (
         <Route exact path="/" component={App} />
         <Route exact path="/ads" component={AdvertisementExampleCommonUnits} />
         <Route exact path="/cards" component={CardExampleCard} />
-        <Route exact path="/Users" component={Users} />
+        <Route exact path="/users" component={Users} />
         <Route
             path="*"
             render={() => (
