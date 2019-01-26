@@ -11,7 +11,6 @@ class App extends Component {
         <Menu />
         <div className="routesWrapper grid-container">
           {routes}
-          <GridExampleGrid />
         </div>
       </div>
     );

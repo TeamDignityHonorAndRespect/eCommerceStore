@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import { getUsers } from "../reducers/main"; //get users from redux
+import { getProducts } from "../reducers/main"; //get products from redux
 import { connect } from "react-redux";
 
-class Users extends Component {
+class Products extends Component {
     constructor() {
         super();
         this.state = {
-            users: []
+            products: []
         };
-        this.truncate = this.truncate.bind(this);
+
     }
     componentDidMount() {
-        this.props.getUsers().then(resp => this.setState({ users: resp.value.data }))
+        this.props.getProducts().then(resp => this.setState({ products: resp.value.data }))
     }
 
     truncate(co) {
@@ -19,22 +19,23 @@ class Users extends Component {
     }
 
     render() {
-        console.log(this.props)
-
-        let users = this.props.users.data && this.props.users.data.map((obj, i) => {
+        console.log('state: ', this.state)
+        console.log('props', this.props)
+        let products = this.state.products.map((obj, i) => {
             return <tr key={i}>
                 <td>{obj.name}</td>
                 <td>{obj.user_id}</td>
                 <td>{this.truncate(obj.created_on)}</td>
             </tr>
         });
+
         return (
             <table >
                 <tbody>
                     <tr>
                         <th>Name</th><th>User</th><th>Created On</th>
                     </tr>
-                    {users}
+                    {products}
                 </tbody>
             </table>
         );
@@ -44,5 +45,5 @@ class Users extends Component {
 const mapStateToProps = state => state;
 
 export default connect(mapStateToProps, {
-    getUsers
-})(Users);
+    getProducts,
+})(Products);

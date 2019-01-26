@@ -25,3 +25,17 @@ code {
   border: solid thin;
   height: 80%;
 }
+td, th{
+  border: solid thin;
+  padding: 15px;
+  transition: border-radius .5s;
+  text-align: center;
+}
+td:hover {
+  border-radius: 5px;
+  cursor: pointer;
+  background: #fafafa;
+}
+tbody {
+  border: solid thin;
+}
