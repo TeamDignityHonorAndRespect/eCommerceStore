@@ -1,25 +1,27 @@
 import axios from "axios";
 
-const initialState = {
-    users: {}
-}
-
 const GET_USERS = "GET_USERS";
 
 // ACTION CREATORS
 export function getUsers() {
-    const users = axios.get('/users').then(response => response)
     return {
         type: GET_USERS,
-        payload: users
+        payload: axios.request('/users').then(response => response)
     }
 };
 
+const initialState = {
+    users: {},
+    isLoading: false
+}
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case GET_USERS:
-            return console.log(action.payload)
+        case `${GET_USERS}_PENDING`:
+            return Object.assign({}, state, { isLoading: true });
 
+        case `${GET_USERS}_FULFILLED`:
+            return Object.assign({}, state, { users: action.payload });
         default:
             return state;
     }
