@@ -7,7 +7,8 @@ const GET_PRODUCTS = "GET_PRODUCTS";
 export function getUsers() {
     return {
         type: GET_USERS,
-        payload: axios.request('/users').then(response => response)
+        // payload: axios.request('/users').then(response => response)
+        payload: axios.get('/auth/me')
     }
 };
 
@@ -19,9 +20,12 @@ export function getProducts(e) {
 };
 
 const initialState = {
-    users: {},
-    isLoading: false,
-    products: {}
+    users: {
+        id: null,
+        email: null,
+        name: null
+    },
+    isLoading: false
 }
 
 const reducer = (state = initialState, action) => {

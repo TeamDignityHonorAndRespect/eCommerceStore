@@ -5,9 +5,11 @@ import App from "./App";
 import CardExampleCard from './components/Cards';
 import Users from './components/Users';
 import Products from './components/Products';
+import Login from './components/Login';
 
 export default (
     <Switch>
+        <Route exact path="/login" component={Login} />
         <Route exact path="/" component={App} />
         <Route exact path="/ads" component={AdvertisementExampleCommonUnits} />
         <Route exact path="/cards" component={CardExampleCard} />
