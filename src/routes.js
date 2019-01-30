@@ -8,7 +8,7 @@ import Login from './components/Login';
 
 export default (
     <Switch>
-        <Route exact path ="/Login" component={Login} />
+        <Route exact path ="/login" component={Login} />
         <Route exact path="/" component={App} />
         <Route exact path="/ads" component={AdvertisementExampleCommonUnits} />
         <Route exact path="/cards" component={CardExampleCard} />

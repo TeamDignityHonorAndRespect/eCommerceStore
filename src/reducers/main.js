@@ -6,12 +6,17 @@ const GET_USERS = "GET_USERS";
 export function getUsers() {
     return {
         type: GET_USERS,
-        payload: axios.request('/users').then(response => response)
+        // payload: axios.request('/users').then(response => response)
+        payload: axios.get('/auth/me')
     }
 };
 
 const initialState = {
-    users: {},
+    users: {
+        id: null,
+        email: null,
+        name: null
+    },
     isLoading: false
 }
 
