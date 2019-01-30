@@ -9,7 +9,10 @@ const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
 
 //middleware
-const isAuthenticated = require('./middleware/isAuthenticated')
+
+
+const isAuthenticated = require('../middleware/isAuthenticated')
+
 
 const array = ['item1', 'item2', 'item3', 'item4']
 
@@ -55,14 +58,16 @@ app.use(session({
       (accessToken, refreshToken, extraParams, profile, done) => {
   
         const db = app.get('db');
+        console.log(1111111111111, db.get_user_by_auth_id)
         db.get_user_by_auth_id({ auth_id: profile.id }).then(results => {
+            console.log(2222222222, profile.id)
           let user = results[0];
   
           if (user) {
             return done(null, user)
           } else {
             let userObj = {
-              username: profile.displayName,
+              name: profile.displayName,
               auth_id: profile.id
             }
             
@@ -92,15 +97,15 @@ app.use(session({
   app.get("/auth", passport.authenticate("auth0"));
   app.get(
     "/auth/callback",
-    passport.authenticate("auth0", {
-      successRedirect: "/#/",
-      failureRedirect: "/#/Login"
+      passport.authenticate("auth0", {
+      successRedirect: "/#/users",
+      failureRedirect: "/#/login"
     })
   );
   
   app.get('/auth/logout', (req, res) => {
     req.logout()
-    res.redirect('/#/Login')
+    res.redirect('/#/login')
   });
   
   app.get("/auth/me", (req, res) => {
