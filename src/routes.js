@@ -4,6 +4,7 @@ import AdvertisementExampleCommonUnits from './components/Ads';
 import App from "./App";
 import CardExampleCard from './components/Cards';
 import Users from './components/Users';
+import Products from './components/Products';
 
 export default (
     <Switch>
@@ -11,6 +12,7 @@ export default (
         <Route exact path="/ads" component={AdvertisementExampleCommonUnits} />
         <Route exact path="/cards" component={CardExampleCard} />
         <Route exact path="/users" component={Users} />
+        <Route exact path="/products" component={Products} />
         <Route
             path="*"
             render={() => (

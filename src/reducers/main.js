@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const GET_USERS = "GET_USERS";
+const GET_PRODUCTS = "GET_PRODUCTS";
 
 // ACTION CREATORS
 export function getUsers() {
@@ -10,9 +11,17 @@ export function getUsers() {
     }
 };
 
+export function getProducts(e) {
+    return {
+        type: GET_PRODUCTS,
+        payload: e
+    }
+};
+
 const initialState = {
     users: {},
-    isLoading: false
+    isLoading: false,
+    products: {}
 }
 
 const reducer = (state = initialState, action) => {
@@ -21,7 +30,12 @@ const reducer = (state = initialState, action) => {
             return Object.assign({}, state, { isLoading: true });
 
         case `${GET_USERS}_FULFILLED`:
-            return Object.assign({}, state, { users: action.payload });
+            return Object.assign({}, state, {
+                isLoading: false,
+                users: action.payload,
+            });
+        case GET_PRODUCTS:
+            return Object.assign({}, state, { products: action.payload });
         default:
             return state;
     }

@@ -5,7 +5,7 @@ const cors = require("cors");
 const _ = require('underscore');
 const massive = require("massive");
 
-const array = ['item1', 'item2', 'item3', 'item4']
+const prod = require(`${__dirname}/controllers/prodCtrl`);
 
 const port = 3001;
 
@@ -23,12 +23,6 @@ massive(process.env.URI).then(db => {
 app.use(bodyParser.json());
 app.use(cors());
 
-//get random item
-app.get('/random', (req, res) => res.send(_.sample(array)))
-
-//return all items
-app.get('/all', (req, res) => res.send(array))
-
 app.get("/users", (req, res) => {
     app
         .get("db")
@@ -38,6 +32,7 @@ app.get("/users", (req, res) => {
         });
 });
 
+app.get("/api/products/:id", prod.getProd);
 // app.get("/api/createUser", (req, res) => {
 //     app
 //         .get("db")

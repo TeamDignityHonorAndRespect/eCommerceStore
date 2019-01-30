@@ -19,8 +19,6 @@ class Users extends Component {
     }
 
     render() {
-        console.log(this.props)
-
         let users = this.props.users.data && this.props.users.data.map((obj, i) => {
             return <tr key={i}>
                 <td>{obj.name}</td>
@@ -32,7 +30,9 @@ class Users extends Component {
             <table >
                 <tbody>
                     <tr>
-                        <th>Name</th><th>User</th><th>Created On</th>
+                        <th>Name</th>
+                        <th>User</th>
+                        <th>Created On</th>
                     </tr>
                     {users}
                 </tbody>

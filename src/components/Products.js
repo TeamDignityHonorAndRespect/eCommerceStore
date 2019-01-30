@@ -1,31 +1,24 @@
 import React, { Component } from 'react';
-import { getProducts } from "../reducers/main"; //get products from redux
+import { getProducts, getUsers } from "../reducers/main"; //get products from redux
 import { connect } from "react-redux";
 
 class Products extends Component {
     constructor() {
         super();
         this.state = {
-            products: []
+            products: [],
         };
 
     }
     componentDidMount() {
-        this.props.getProducts().then(resp => this.setState({ products: resp.value.data }))
-    }
 
-    truncate(co) {
-        return co.slice(0, 10);
     }
 
     render() {
-        console.log('state: ', this.state)
-        console.log('props', this.props)
+        this.props.users.data && this.props.getProducts(this.props.users.data[0].user_id);
         let products = this.state.products.map((obj, i) => {
             return <tr key={i}>
-                <td>{obj.name}</td>
-                <td>{obj.user_id}</td>
-                <td>{this.truncate(obj.created_on)}</td>
+
             </tr>
         });
 
@@ -46,4 +39,5 @@ const mapStateToProps = state => state;
 
 export default connect(mapStateToProps, {
     getProducts,
+    getUsers
 })(Products);
