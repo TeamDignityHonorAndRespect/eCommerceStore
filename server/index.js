@@ -57,9 +57,9 @@ passport.use(
         },
         (accessToken, refreshToken, extraParams, profile, done) => {
             const db = app.get('db');
-            console.log(1111111111111, db.get_user_by_auth_id)
+            // console.log(1111111111111, db.get_user_by_auth_id)
             db.get_user_by_auth_id({ auth_id: profile.id }).then(results => {
-                console.log(2222222222, profile.id)
+                console.log(2222222222, profile.id, results[0])
                 let user = results[0];
 
                 if (user) {
@@ -81,23 +81,22 @@ passport.use(
 );
 
 passport.serializeUser((user, done) => {
-    return done(null, user.id);
+    return done(null, user.user_id);
 });
 
 passport.deserializeUser((id, done) => {
     const db = app.get('db');
-
-    db.getUser({ id }).then(results => {
-        let user = results[0];
-        return done(null, user);
-    });
+    id = id.toString();
+    db.getUser(id).then(results => {
+        return done(null, results);
+    }).catch(console.log);
 });
 
 app.get("/auth", passport.authenticate("auth0"));
 app.get(
     "/auth/callback",
     passport.authenticate("auth0", {
-        successRedirect: "/#/users",
+        successRedirect: "http://localhost:3000/#/",
         failureRedirect: "/#/login"
     })
 );
@@ -122,10 +121,10 @@ app.get("/auth/me", (req, res) => {
 
 
 //get random item
-app.get('/random', (req, res) => res.send(_.sample(array)))
+// app.get('/random', (req, res) => res.send(_.sample(array)))
 
 //return all items
-app.get('/all', (req, res) => res.send(array))
+// app.get('/all', (req, res) => res.send(array))
 
 app.get("/users", (req, res) => {
     app
