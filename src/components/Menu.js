@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Menu, Icon } from 'semantic-ui-react';
+import {Link} from 'react-router-dom';
 
 
 export default class MenuExampleBasic extends Component {
@@ -12,13 +13,13 @@ export default class MenuExampleBasic extends Component {
 
         return (
             <Menu>
-                <Menu.Item
-                    name='editorials'
-                    active={activeItem === 'editorials'}
+               <Link to='/login'> <Menu.Item
+                    name='Login'
+                    active={activeItem === 'Login'}
                     onClick={this.handleItemClick}
                 >
-                    Editorials
-        </Menu.Item>
+                    Login
+        </Menu.Item></Link>
 
                 <Menu.Item name='reviews' active={activeItem === 'reviews'} onClick={this.handleItemClick}>
                     Reviews

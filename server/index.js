@@ -96,7 +96,7 @@ app.get("/auth", passport.authenticate("auth0"));
 app.get(
     "/auth/callback",
     passport.authenticate("auth0", {
-        successRedirect: "http://localhost:3000/#/",
+        successRedirect: "http://localhost:3000/#/successfullyauthenticated", // temporary
         failureRedirect: "/#/login"
     })
 );
@@ -110,7 +110,7 @@ app.get("/auth/me", (req, res) => {
     if (req.isAuthenticated()) {
         return res.send(req.user);
     } else {
-        return res.status(404).send("user not authenticated");
+        return res.status(500).send("user not authenticated");
     }
 });
 

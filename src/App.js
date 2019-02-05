@@ -3,7 +3,8 @@ import Menu from './components/Menu';
 import routes from './routes';
 import GridExampleGrid from './components/Grid'
 import { connect } from "react-redux";
-import { getUsers } from "./reducers/main";
+// import { getUsers } from "./reducers/main";
+import { getUser } from "./reducers/main";
 
 class App extends Component {
   constructor() {
@@ -13,14 +14,16 @@ class App extends Component {
     };
   }
   componentDidMount() {
-    this.props.getUsers().then(resp => this.setState({ users: resp.value.data }))
+    this.props.getUser();
   }
   render() {
-
+    console.log(this.props.user);
+    let user = this.props.user && this.props.user.name;
     return (
       <div className="App">
         <Menu />
         <div className="routesWrapper grid-container">
+        Hi {user}
           {routes}
         </div>
       </div>
@@ -31,5 +34,5 @@ class App extends Component {
 const mapStateToProps = state => state;
 
 export default connect(mapStateToProps, {
-  getUsers
+  getUser
 })(App);

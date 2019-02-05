@@ -3,17 +3,16 @@ import { Switch, Route } from "react-router-dom";
 import AdvertisementExampleCommonUnits from './components/Ads';
 import App from "./App";
 import CardExampleCard from './components/Cards';
-import Users from './components/Users';
+// import Users from './components/Users';
 import Products from './components/Products';
 import Login from './components/Login';
 
 export default (
     <Switch>
-        <Route exact path="/login" component={Login} />
         <Route exact path="/" component={App} />
+        <Route exact path="/login" component={Login} />
         <Route exact path="/ads" component={AdvertisementExampleCommonUnits} />
         <Route exact path="/cards" component={CardExampleCard} />
-        <Route exact path="/users" component={Users} />
         <Route exact path="/products" component={Products} />
         <Route
             path="*"
