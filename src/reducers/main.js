@@ -21,7 +21,14 @@ export function getUser() {
 export function getProducts(e) {
     return {
         type: GET_PRODUCTS,
-        payload: e
+        payload: axios
+        .get(`/api/products/${e}`)
+        .then(response => {
+          return response;
+        })
+        .catch(err => {
+          return err
+        })
     }
 };
 
@@ -31,6 +38,7 @@ const initialState = {
         email: null,
         name: null
     },
+    products: "",
     user: "",
     isLoading: false
 }

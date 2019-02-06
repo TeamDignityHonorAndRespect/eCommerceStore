@@ -1,10 +1,9 @@
 module.exports = {
     getProd: (req, res, next) => {
-        console.log(req);
         const dbInstance = req.app.get("db");
         const { params } = req;
         dbInstance
-            .getAllProductsByUser([params])
+            .getAllProductsByUser([params.id])
             .then(prod => res.status(200).json(prod))
             .catch(err => res.status(500).console.log(err));
     },
