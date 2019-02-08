@@ -45,7 +45,7 @@ export default class MenuExampleBasic extends Component {
 
     render() {
         return (
-        <button class="ui button" type="submit" style={{fontSize: '2em'}} onClick={(e) => this.handleClick(e)}>+</button>
+        <button class="ui button addButton" type="submit" onClick={(e) => this.handleClick(e)}>+</button>
         )
     }
 }

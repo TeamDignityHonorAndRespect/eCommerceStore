@@ -22,8 +22,10 @@ code {
 .routesWrapper {
   width: 80%;
   margin: 0 auto;
-  border: solid thin;
+  border: 1px solid rgba(34,36,38,.15);
+  box-shadow: 0 1px 2px 0 rgba(34,36,38,.15);
   height: 80%;
+  border-radius: 5px;
 }
 td, th{
   border: solid thin;
@@ -41,7 +43,8 @@ tbody {
 }
 .grid-container {
   display: grid;
-  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-gap: 10p;
+  grid-template-columns: repeat(auto-fill, 220px);
   grid-template-rows: 20% 20% 20% 20% 20%;
   text-align: center;
   justify-items: center;
@@ -52,4 +55,17 @@ tbody {
 } */
 .button {
   text-align: center;
+}
+.addButton {
+  font-size: 2em !important;
+  color: white !important;
+  background: #222 !important;
+  opacity: .5;
+}
+.swal2-shown {
+  background: rgb(17, 24, 24) !important;
+}
+.right {
+  position: fixed;
+  right: 0px;
 }

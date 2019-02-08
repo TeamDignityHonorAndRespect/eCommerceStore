@@ -27,13 +27,17 @@ class App extends Component {
   render() {
     console.log(this.props)
     this.props.user && this.getProds();
-    let user = this.props.user && this.props.user.name;
     return (
       <div className="App">
         <Menu />
         <div className="routesWrapper grid-container">
-        Hi {user}
           {routes}
+          <div>A Product</div>
+          <div>A Product</div>
+          <div>A Product</div>
+          <div>A Product</div>
+          <div>A Product</div>
+          <div>A Product</div>
           <div>A Product</div>
           <div>A Product</div>
           <div>A Product</div>

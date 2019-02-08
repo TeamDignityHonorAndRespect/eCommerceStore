@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Menu, Icon } from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
+import { connect } from "react-redux";
+import { getUser, getProducts } from "../reducers/main";
 
 
-export default class MenuExampleBasic extends Component {
+class MenuExampleBasic extends Component {
     state = {}
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
@@ -32,7 +34,16 @@ export default class MenuExampleBasic extends Component {
                 >
                     Upcoming Events
         </Menu.Item>
+        {this.props.user && <div className="item right">Hi {this.props.user.name}</div>}
             </Menu>
+            
         )
     }
 }
+
+const mapStateToProps = state => state;
+
+export default connect(mapStateToProps, {
+  getUser,
+  getProducts
+})(MenuExampleBasic);
