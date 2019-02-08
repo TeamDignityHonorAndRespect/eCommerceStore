@@ -44,8 +44,12 @@ tbody {
   grid-template-columns: 20% 20% 20% 20% 20%;
   grid-template-rows: 20% 20% 20% 20% 20%;
   text-align: center;
+  justify-items: center;
   align-items: center;
 }
 /* .grid-container > div {
   border: solid thin;
 } */
+.button {
+  text-align: center;
+}

@@ -4,6 +4,7 @@ import routes from './routes';
 // import GridExampleGrid from './components/Grid'
 import { connect } from "react-redux";
 import { getUser, getProducts } from "./reducers/main";
+import AddProduct from './components/forms/AddProduct';
 // import axios from 'axios';
 
 class App extends Component {
@@ -12,16 +13,20 @@ class App extends Component {
     this.state = {
       users: []
     };
+    this.getProds = this.getProds.bind(this);
   }
-  componentWillMount(){
-    this.props.getUser()
-  }
+ 
   componentDidMount() {
-    console.log(this.props.user);
-    this.props.user && this.props.getProducts(this.props.user.user.user_id.toString());
+  this.props.getUser()
+    
   }
+  getProds(){
+    this.props.getProducts(this.props.user.user_id.toString());
+  }
+
   render() {
-    console.log(this.props);
+    console.log(this.props)
+    this.props.user && this.getProds();
     let user = this.props.user && this.props.user.name;
     return (
       <div className="App">
@@ -32,7 +37,7 @@ class App extends Component {
           <div>A Product</div>
           <div>A Product</div>
           <div>A Product</div>
-          <div>A Product</div>
+          <AddProduct/>
         </div>
       </div>
     );
