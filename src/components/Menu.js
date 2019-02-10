@@ -6,10 +6,19 @@ import { getUser, getProducts } from "../reducers/main";
 
 
 class MenuExampleBasic extends Component {
-    state = {}
+    constructor() {
+        super();
+        this.state = {
+        };
+        this.getFirstName = this.getFirstName.bind(this);
+      }
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
+    getFirstName(name){
+        name = name.split(" ");
+        return name[0];
+    }
     render() {
         const { activeItem } = this.state
 
@@ -29,19 +38,14 @@ class MenuExampleBasic extends Component {
                 >
                     Signout
         </Menu.Item></a>}
-
-                <Menu.Item name='reviews' active={activeItem === 'reviews'} onClick={this.handleItemClick}>
-                    Reviews
-        </Menu.Item>
-
                 <Menu.Item
-                    name='upcomingEvents'
-                    active={activeItem === 'upcomingEvents'}
+                    name='Market'
+                    active={activeItem === 'Market'}
                     onClick={this.handleItemClick}
                 >
-                    Upcoming Events
+                    Market Place
         </Menu.Item>
-        {this.props.user && <div className="item right">Hi {this.props.user.name}</div>}
+        {this.props.user && <div className="item right">Hi {this.getFirstName(this.props.user.name)}</div>}
             </Menu>
             
         )
