@@ -27,7 +27,6 @@ export default class MenuExampleBasic extends Component {
             'Retail Price',
             'Sale Price',
             'SKU / Item Number',
-            
           ]).then((result) => {
               console.log(result.value)
               // we could then do an axios request using result.value as parameters
@@ -36,7 +35,6 @@ export default class MenuExampleBasic extends Component {
                 title: 'All done!',
                 html:
                   'Storing New Product in Database',
-                  
                 confirmButtonText: 'Lovely!'
               })
             }

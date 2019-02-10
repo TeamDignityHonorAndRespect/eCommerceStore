@@ -15,13 +15,20 @@ class MenuExampleBasic extends Component {
 
         return (
             <Menu>
-               <Link to='/login'> <Menu.Item
+              {!this.props.user && <a href='http://localhost:3001/auth'> <Menu.Item
                     name='Login'
                     active={activeItem === 'Login'}
                     onClick={this.handleItemClick}
                 >
                     Login
-        </Menu.Item></Link>
+        </Menu.Item></a>}
+        {this.props.user && <a href='http://localhost:3001/auth/logout'> <Menu.Item
+                    name='Signout'
+                    active={activeItem === 'Signout'}
+                    onClick={this.handleItemClick}
+                >
+                    Signout
+        </Menu.Item></a>}
 
                 <Menu.Item name='reviews' active={activeItem === 'reviews'} onClick={this.handleItemClick}>
                     Reviews

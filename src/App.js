@@ -5,6 +5,8 @@ import routes from './routes';
 import { connect } from "react-redux";
 import { getUser, getProducts } from "./reducers/main";
 import AddProduct from './components/forms/AddProduct';
+import HeadLine from './components/HeadLine';
+import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react'
 // import axios from 'axios';
 
 class App extends Component {
@@ -30,8 +32,17 @@ class App extends Component {
     return (
       <div className="App">
         <Menu />
-        <div className="routesWrapper grid-container">
-          {routes}
+        {routes}
+        <HeadLine/>
+        {this.props.user && <div className="routesWrapper grid-container">
+          {this.props.isLoading &&    
+        <Segment>
+      <Dimmer active inverted>
+        <Loader inverted content='Loading' />
+      </Dimmer>
+
+      <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
+    </Segment>}
           <div>A Product</div>
           <div>A Product</div>
           <div>A Product</div>
@@ -42,7 +53,7 @@ class App extends Component {
           <div>A Product</div>
           <div>A Product</div>
           <AddProduct/>
-        </div>
+        </div>}
       </div>
     );
   }
