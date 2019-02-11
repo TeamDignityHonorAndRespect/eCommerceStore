@@ -17,8 +17,10 @@ export default class MenuExampleBasic extends Component {
         Swal.mixin({
             input: 'text',
             confirmButtonText: 'Next &rarr;',
+            confirmButtonColor: '#85bb65',
             showCancelButton: true,
-            progressSteps: ['1', '2', '3', '4', '5']
+            progressSteps: ['1', '2', '3', '4', '5'],
+            progressStepsColor: 'green'
           }).queue([
             {
               title: 'Product Name',

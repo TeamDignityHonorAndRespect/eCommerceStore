@@ -59,8 +59,8 @@ tbody {
 .addButton {
   font-size: 2em !important;
   color: white !important;
-  background: #222 !important;
-  opacity: .5;
+  background: #85bb65 !important;
+  opacity: .9;
 }
 .swal2-shown {
   background: rgb(17, 24, 24) !important;
@@ -79,3 +79,15 @@ tbody {
   color: #85bb65;
   zoom: 1.5;
 }
+/* .swal2-progresssteps .swal2-progresscircle {
+  background: #999999 !important;
+}
+.swal2-progresssteps .swal2-progressline{
+  background: #85bb65;
+}
+.sswal2-progressline {
+  background: #999999 !important;
+}
+.swal2-activeprogressstep {
+  background: #85bb65 !important;
+} */

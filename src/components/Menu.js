@@ -21,7 +21,6 @@ class MenuExampleBasic extends Component {
     }
     render() {
         const { activeItem } = this.state
-
         return (
             <Menu>
               {!this.props.user && <a href='http://localhost:3001/auth'> <Menu.Item

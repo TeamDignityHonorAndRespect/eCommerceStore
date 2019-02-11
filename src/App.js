@@ -15,20 +15,31 @@ class App extends Component {
     this.state = {
       users: []
     };
-    this.getProds = this.getProds.bind(this);
+
   }
  
   componentDidMount() {
-  this.props.getUser()
+    const that = this;
+  this.props.getUser().then(function (response) {
+    console.log(response.value, '00011111')
+    if(response.value){
+    that.props.getProducts(response.value.user_id);
+    }
+  })
     
-  }
-  getProds(){
-    this.props.getProducts(this.props.user.user_id.toString());
   }
 
   render() {
     console.log(this.props)
-    this.props.user && this.getProds();
+    let results = this.props.products && this.props.products.map((data, i) => {
+      return(
+        <div>
+        <div>{data.sku}</div>
+        <div>{data.prod_name}</div>
+        <div>{data.price}</div>
+        </div>
+      )
+    })
     return (
       <div className="App">
         <Menu />
@@ -43,15 +54,7 @@ class App extends Component {
 
       <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
     </Segment>}
-          <div>A Product</div>
-          <div>A Product</div>
-          <div>A Product</div>
-          <div>A Product</div>
-          <div>A Product</div>
-          <div>A Product</div>
-          <div>A Product</div>
-          <div>A Product</div>
-          <div>A Product</div>
+            {results}
           <AddProduct/>
         </div>}
       </div>

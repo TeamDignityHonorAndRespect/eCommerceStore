@@ -57,11 +57,8 @@ passport.use(
         },
         (accessToken, refreshToken, extraParams, profile, done) => {
             const db = app.get('db');
-            // console.log(1111111111111, db.get_user_by_auth_id)
             db.get_user_by_auth_id({ auth_id: profile.id }).then(results => {
-                console.log(2222222222, profile.id, results[0])
                 let user = results[0];
-
                 if (user) {
                     return done(null, user)
                 } else {
@@ -69,7 +66,6 @@ passport.use(
                         user_name: profile.displayName,
                         auth_id: profile.id
                     }
-
                     db.createUser(userObj).then(results => {
                         let user = results[0];
                         return done(null, user)
@@ -135,7 +131,15 @@ app.get("/users", (req, res) => {
         });
 });
 
-app.get("/api/products/:id", prod.getProd);
+app.get("/user/:id", (req, res) => {
+    console.log('thisy',req.params.id);
+    app
+        .get("db")
+        .getAllProductsByUser(req.params.id)
+        .then(users => {
+            res.status(200).json(users);
+        });
+});
 // app.get("/api/createUser", (req, res) => {
 //     app
 //         .get("db")

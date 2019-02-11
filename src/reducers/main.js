@@ -18,16 +18,14 @@ export function getUser() {
     };
   }
 
-export function getProducts(e) {
+export function getProducts(param) {
+  console.log('ducks', param)
     return {
         type: GET_PRODUCTS,
         payload: axios
-        .get(`/api/products/${e}`)
+        .get(`http://localhost:3001/user/${param}`)
         .then(response => {
-          return response;
-        })
-        .catch(err => {
-          return err
+          return response.data;
         })
     }
 };
@@ -53,7 +51,7 @@ const reducer = (state = initialState, action) => {
                 isLoading: false,
                 user: action.payload,
             });
-        case GET_PRODUCTS:
+        case `${GET_PRODUCTS}_FULFILLED`:
             return Object.assign({}, state, { products: action.payload });
         default:
             return state;
