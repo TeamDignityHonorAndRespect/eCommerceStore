@@ -43,12 +43,16 @@ tbody {
 }
 .grid-container {
   display: grid;
-  grid-gap: 10p;
+  padding-top:40px;
+  grid-gap: 20px;
+  grid-row-gap: 40px;
   grid-template-columns: repeat(auto-fill, 220px);
-  grid-template-rows: 20% 20% 20% 20% 20%;
+  grid-template-rows: 20% 20% 20% 20%;
   text-align: center;
   justify-items: center;
+  justify-content: space-around;
   align-items: center;
+  overflow: scroll;
 }
 /* .grid-container > div {
   border: solid thin;
@@ -63,7 +67,7 @@ tbody {
   opacity: .9;
 }
 .swal2-shown {
-  background: rgb(17, 24, 24) !important;
+  background: rgb(17, 24, 24, .5) !important;
 }
 .right {
   position: fixed;
@@ -91,3 +95,9 @@ tbody {
 .swal2-activeprogressstep {
   background: #85bb65 !important;
 } */
+.green {
+  background: #85bb65 !important;
+}
+.green:active {
+  background: #85bb65 !important;
+}

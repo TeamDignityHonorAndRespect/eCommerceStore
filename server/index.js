@@ -132,7 +132,6 @@ app.get("/users", (req, res) => {
 });
 
 app.get("/user/:id", (req, res) => {
-    console.log('thisy',req.params.id);
     app
         .get("db")
         .getAllProductsByUser(req.params.id)
@@ -140,14 +139,21 @@ app.get("/user/:id", (req, res) => {
             res.status(200).json(users);
         });
 });
-// app.get("/api/createUser", (req, res) => {
-//     app
-//         .get("db")
-//         .createUser()
-//         .then(response => {
-//             res.status(200).json(response);
-//         });
-// });
+
+app.post("/api/createProd/:id", (req, res) => {
+    app
+      .get("db")
+      .createProduct([
+          req.body.sku, 
+          req.body.ownerID, 
+          req.body.prodName, 
+          req.body.prodDescription, 
+          req.body.salePrice, 
+          req.body.retailPrice,
+          req.body.imageURL
+        ])
+      .then(response => {console.log(response)});
+  });
 
 // const path = require("path");  //for production use
 // app.get("*", (req, res) => {
