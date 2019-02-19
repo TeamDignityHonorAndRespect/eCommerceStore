@@ -1,12 +1,27 @@
 import React, { Component } from 'react';
-import { getUser, getProducts } from "../../reducers/main";
+import { getUser, getProducts, setProd} from "../../reducers/main";
 import Swal from 'sweetalert2'
 import axios from 'axios';
 import { connect } from "react-redux";
 
 
 class MenuExampleBasic extends Component {
-    state = {}
+  constructor() {
+    super();
+    this.state = {
+      addedProd: false
+    };
+  }
+ 
+  componentDidMount() {
+    const that = this;
+  this.props.getUser().then(function (response) {
+    if(response.value){
+    that.props.getProducts(response.value.user_id);
+    }
+  })
+    
+  }
 
     handleClick(e){
         e.preventDefault();
@@ -26,6 +41,7 @@ class MenuExampleBasic extends Component {
             'SKU / Item Number',
             'Image URL'
           ]).then((result) => {
+            if (result.value) {
               let v = result.value;
               let body = {
                 prodName: v[0],
@@ -36,9 +52,12 @@ class MenuExampleBasic extends Component {
                 imageURL: v[5],
                 ownerID: this.props.user.user_id
               }
-            if (result.value) {
               axios
-              .post(`/api/createProd/${this.props.user.user_id}`, body)
+              .post(`/api/createProd/${this.props.user.user_id}`, body).then(
+                axios.get(`/user/${this.props.user.user_id}`).then(response => {
+                  this.props.setProd(response.data);
+                })
+              )
               Swal.fire({
                 title: 'All done!',
                 html:
@@ -46,7 +65,7 @@ class MenuExampleBasic extends Component {
                 confirmButtonText: 'Lovely!'
               })
             }
-          }).then(results => console.log(results), this.props.getProducts(this.props.user.user_id))
+          })
     }
 
     render() {
@@ -66,5 +85,6 @@ const mapStateToProps = state => state;
 
 export default connect(mapStateToProps, {
   getUser,
-  getProducts
+  getProducts,
+  setProd
 })(MenuExampleBasic);

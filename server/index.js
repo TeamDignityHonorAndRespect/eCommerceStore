@@ -130,7 +130,7 @@ app.get("/users", (req, res) => {
             res.status(200).json(users);
         });
 });
-
+//this is getting products by user ID
 app.get("/user/:id", (req, res) => {
     app
         .get("db")
@@ -152,7 +152,7 @@ app.post("/api/createProd/:id", (req, res) => {
           req.body.retailPrice,
           req.body.imageURL
         ])
-      .then(response => {console.log(response)});
+      .then(products => res.status(200).json(products));
   });
 
 // const path = require("path");  //for production use

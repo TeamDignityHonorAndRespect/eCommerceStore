@@ -25,13 +25,12 @@ class App extends Component {
   componentDidMount() {
     const that = this;
   this.props.getUser().then(function (response) {
-    console.log(response.value, '00011111')
     if(response.value){
     that.props.getProducts(response.value.user_id);
     }
   })
-    
   }
+  
 deleteProduct(event){
 event.preventDefault();
 let num = event.target.value;

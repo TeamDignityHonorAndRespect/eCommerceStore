@@ -13,6 +13,8 @@ body {
 }
 .App{
   height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
 code {
@@ -52,7 +54,8 @@ tbody {
   justify-items: center;
   justify-content: space-around;
   align-items: center;
-  overflow: scroll;
+  /* overflow-y: scroll; */
+  box-sizing: content-box;
 }
 /* .grid-container > div {
   border: solid thin;

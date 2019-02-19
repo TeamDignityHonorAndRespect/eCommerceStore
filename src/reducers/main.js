@@ -2,6 +2,7 @@ import axios from "axios";
 
 const GET_USER = "GET_USER";
 const GET_PRODUCTS = "GET_PRODUCTS";
+const SET_PROD = "SET_PROD";
 
 // ACTION CREATORS
 export function getUser() {
@@ -18,8 +19,14 @@ export function getUser() {
     };
   }
 
+  export function setProd(e) {
+    return {
+      type: SET_PROD,
+      payload: e
+    };
+  }
+
 export function getProducts(param) {
-  console.log('ducks', param)
     return {
         type: GET_PRODUCTS,
         payload: axios
@@ -38,7 +45,8 @@ const initialState = {
     },
     products: "",
     user: "",
-    isLoading: false
+    isLoading: false,
+    didErr: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -51,8 +59,18 @@ const reducer = (state = initialState, action) => {
                 isLoading: false,
                 user: action.payload,
             });
+        case `${GET_USER}_REJECTED`:
+            return Object.assign({}, state, { isLoading: false, didErr: true });
+
         case `${GET_PRODUCTS}_FULFILLED`:
+            return Object.assign({}, state, { 
+              products: action.payload,
+              isLoading: false
+            });
+        
+        case SET_PROD:
             return Object.assign({}, state, { products: action.payload });
+
         default:
             return state;
     }
