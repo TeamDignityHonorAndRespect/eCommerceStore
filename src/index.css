@@ -62,6 +62,7 @@ tbody {
 } */
 .button {
   text-align: center;
+  zoom: .85
 }
 .addButton {
   font-size: 2em !important;
@@ -103,4 +104,16 @@ tbody {
 }
 .green:active {
   background: #85bb65 !important;
+}
+.ui.menu {
+  background: #85BA65;
+  color: white;
+}
+.ui.menu .item {
+  color: white;
+  text-emphasis: bold;
+}
+.pageHeader {
+  align-items: center;
+  text-align: center;
 }

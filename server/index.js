@@ -92,7 +92,7 @@ app.get("/auth", passport.authenticate("auth0"));
 app.get(
     "/auth/callback",
     passport.authenticate("auth0", {
-        successRedirect: "http://localhost:3000/#/", // temporary
+        successRedirect: "http://localhost:3000/#/Market", // temporary
         failureRedirect: "http://localhost:3000/#/"
     })
 );
@@ -140,20 +140,36 @@ app.get("/user/:id", (req, res) => {
         });
 });
 
+app.get("/allProducts", (req, res) => {
+    app
+        .get("db")
+        .getAllProducts()
+        .then(users => {
+            res.status(200).json(users);
+        });
+});
+
 app.post("/api/createProd/:id", (req, res) => {
     app
-      .get("db")
-      .createProduct([
-          req.body.sku, 
-          req.body.ownerID, 
-          req.body.prodName, 
-          req.body.prodDescription, 
-          req.body.salePrice, 
-          req.body.retailPrice,
-          req.body.imageURL
+        .get("db")
+        .createProduct([
+            req.body.sku,
+            req.body.ownerID,
+            req.body.prodName,
+            req.body.prodDescription,
+            req.body.salePrice,
+            req.body.retailPrice,
+            req.body.imageURL
         ])
-      .then(products => res.status(200).json(products));
-  });
+        .then(products => res.status(200).json(products));
+});
+
+app.post("/api/deleteProd/:id", (req, res) => {
+    app
+        .get("db")
+        .deleteProduct(req.params.id)
+        .then(products => res.status(200).json(products));
+});
 
 // const path = require("path");  //for production use
 // app.get("*", (req, res) => {

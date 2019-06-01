@@ -7,6 +7,14 @@ module.exports = {
             .then(prod => res.status(200).json(prod))
             .catch(err => res.status(500).console.log(err));
     },
+    getAllProd: (req, res, next) => {
+        const dbInstance = req.app.get("db");
+        const { params } = req;
+        dbInstance
+            .getAllProducts()
+            .then(prod => res.status(200).json(prod))
+            .catch(err => res.status(500).console.log(err));
+    },
     //create new prod
     // createProd: (req, res, next) => {
     //     const dbInstance = req.app.get("db");

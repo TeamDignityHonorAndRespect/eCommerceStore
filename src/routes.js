@@ -5,6 +5,7 @@ import App from "./App";
 import CardExampleCard from './components/Cards';
 // import Users from './components/Users';
 import Products from './components/Products';
+import Market from './components/Market';
 import Login from './components/Login';
 
 export default (
@@ -14,6 +15,7 @@ export default (
         <Route exact path="/ads" component={AdvertisementExampleCommonUnits} />
         <Route exact path="/cards" component={CardExampleCard} />
         <Route exact path="/products" component={Products} />
+        <Route exact path="/Market" component={Market} />
         <Route
             path="*"
             render={() => (
